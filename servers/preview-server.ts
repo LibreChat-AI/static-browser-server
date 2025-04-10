@@ -5,6 +5,7 @@ import fastifyStatic from "@fastify/static";
 import path from "path";
 
 const PORT = +(process.env.PORT || "3000");
+const HOST = process.env.HOST || "localhost";
 
 const app = fastify({ logger: true });
 
@@ -20,7 +21,7 @@ app.register(fastifyStatic, {
 });
 
 // Run the server!
-app.listen({ port: PORT }, function (err, address) {
+app.listen({ port: PORT, host: HOST }, function (err, address) {
   if (err) {
     app.log.error(err);
     process.exit(1);
