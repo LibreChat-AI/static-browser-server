@@ -1,0 +1,23 @@
+{
+  debug
+}
+
+preview.172.20.231.169.sslip.io, *.172.20.231.169.sslip.io {
+  # Add CORS headers
+  header {
+    Access-Control-Allow-Origin "*"
+    Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers "Content-Type, Authorization"
+    Access-Control-Max-Age "3600"
+  }
+  
+  # Handle OPTIONS requests specially
+  @options {
+    method OPTIONS
+  }
+  respond @options 204
+  
+  reverse_proxy 172.20.231.169:4324
+  # Use our newly generated certificates
+  tls /home/danny/certs/preview.172.20.231.169.sslip.io+1.pem /home/danny/certs/preview.172.20.231.169.sslip.io+1-key.pem
+}
