@@ -1,0 +1,15 @@
+# common
+**/.dockerignore
+**/.git
+**/.gitattributes
+**/.gitignore
+**/node_modules
+
+# specific
+**/.codesandbox
+**/demo
+**/out
+
+# hidden
+.*
+
